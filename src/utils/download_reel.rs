@@ -12,7 +12,7 @@ impl DownloadReel{
         if !response.status().is_success() {
             return Err("Error de URL".into());
         }
-        let mut file = File::create("./reel.mp4")
+        let mut file = File::create("./output/reel.mp4")
             .await?;
         let response_body = response.bytes()
             .await?;

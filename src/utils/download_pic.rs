@@ -12,7 +12,7 @@ impl DownloadPic{
         if !response.status().is_success() {
             return Err("Error de URL".into());
         }
-        let mut file = File::create("./imagen.jpg")
+        let mut file = File::create("./output/imagen.jpg")
             .await?;
         let response_body = response.bytes()
             .await?;
