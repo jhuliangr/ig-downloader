@@ -1,0 +1,14 @@
+{
+  "name": "nav-simulator",
+  "version": "1.0.0",
+  "description": "Navigator simulator for instagram",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jhulian Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^21.5.0"
+  }
+}
