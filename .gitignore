@@ -1,5 +1,6 @@
 /target
 Cargo.lock
 imagen.jpg
+reel.mp4
 src/utils/node/node_modules/
 src/utils/node/package-lock.json

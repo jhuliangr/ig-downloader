@@ -1,6 +1,7 @@
 use std::io::{Write, Read};
 use std::process::{Command, Stdio};
 use crate::utils::DownloadPic;
+use crate::utils::DownloadReel;
 
 pub struct PipeToNode{}
 
@@ -24,12 +25,20 @@ impl PipeToNode{
                 let mut buffer = String::new();
                 stdout.read_to_string(&mut buffer).expect("Error on reading the output of the NODE JS app");
                 println!("Recibido: {}", buffer.trim());
-                let pic = buffer.trim();
-        
-                match DownloadPic::download(pic).await {
-                    Ok(text) => println!("{}", text),
-                    Err(text) => println!("Error: {}", text),
+                let media = buffer.trim();
+
+                if media.contains(".mp4?"){
+                    match DownloadReel::download(media).await {
+                        Ok(text) => println!("{}", text),
+                        Err(text) => println!("Error: {}", text),
+                    }
+                }else{
+                    match DownloadPic::download(media).await {
+                        Ok(text) => println!("{}", text),
+                        Err(text) => println!("Error: {}", text),
+                    }
                 }
+        
             }
             else {
                 println!("It was'nt possible to read from the NODE JS app")
