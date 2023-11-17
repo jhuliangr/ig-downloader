@@ -1,34 +1,4 @@
-const puppeteer = require('puppeteer')
-process.stdin.setEncoding('utf8')
-const fs = require('fs')
-const regexstart = /start (.+)$/;
-const regexget = /get (.+)$/;
-process.stdin.on('data', async (data) =>{
-    data = data.trim()
-    let result = data.match(regexget)
-    if (result){
-        try {
-            const browser = await puppeteer.launch({
-                headless: "new"
-            })
-            const page = await browser.newPage()
-            await page.goto(result[1].trim())
-            try {
-                
-                setTimeout(async () =>{
-                }, 10000)
-                await page.waitForSelector('div[class="_ac7v  _al3n"]', {timeout: 30000})
-                const enlacev = await page.$$eval('a',  a => {
-                    return a.map(href => href.href);
-                })
-                const posprocessing = enlacev.filter(a => a.includes('/p/'))
-                const final = posprocessing.filter(a => !a.includes(result[1].trim()))
-                console.log(final);
-            } catch (err) {
-                console.log('ERROR: ', err);
-            }
-            finally{
-                await browser.close()
+
             }
         } catch (error) {
             console.log(`error ${error}`)
