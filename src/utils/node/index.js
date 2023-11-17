@@ -24,8 +24,6 @@ process.stdin.on('data', async (data) =>{
                 const posprocessing = enlacev.filter(a => a.includes('/p/'))
                 const final = posprocessing.filter(a => !a.includes(result[1].trim()))
                 console.log(final);
-                const html = await page.content()
-                fs.writeFileSync('html.html', html)
             } catch (err) {
                 console.log('ERROR: ', err);
             }
